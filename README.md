@@ -8,7 +8,7 @@ Retrain the model on your own dataset and convert it into TFLite to deploy on mo
 - cuDNN==7.1 
 
 ## Step 1:
-Download object_detection API from the [github](https://github.com/tensorflow/models) repository or clone it by using the following command `git clone https://github.com/tensorflow/models.git`. Following is the hierarchy of the models folder: 
+Download the object_detection API from [github](https://github.com/tensorflow/models) repository or clone it by using the following command `git clone https://github.com/tensorflow/models.git`. Following is the hierarchy of the models folder: 
 ```
 models    
 │
