@@ -1,7 +1,7 @@
-#Train and Convert SSD Resnet-50 model to TFLite
+# Train and Convert SSD Resnet-50 model to TFLite
 Retrain the model on your own dataset and convert it into TFLite to deploy on mobile devices and Coral Dev Board.
 
-##Pre-requisites
+## Pre-requisites
 - Tensorflow-gpu==1.12
 - Bazel==0.24.0
 - cuda==9.0
