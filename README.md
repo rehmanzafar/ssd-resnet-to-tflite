@@ -2,7 +2,7 @@
 Retrain the model on your own dataset and convert it into TFLite to deploy on mobile devices and Coral Dev Board.
 
 ## Pre-requisites
-- Tensorflow-gpu==1.12
+- Tensorflow-gpu==1.12.3 or Tensorflow-gpu==1.14
 - Bazel==0.24.0
 - cuda==9.0
 - cuDNN==7.1 
@@ -143,6 +143,28 @@ tflite_convert  --graph_def_file=/home/models/research/object_detection/tflite_m
 
 ## Step 11
 Use the `.tflite` file to deploy the model on mobile devices and Coral Dev Board.
+### Inference Code
+Use the follwing code to test the converted model.
+```
+interpreter = tf.lite.Interpreter(model_path=PATH_TO_MODEL)
+interpreter.allocate_tensors()
+
+# Get input and output tensors.
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+# Load image for testing
+image = cv2.imread(os.path.join(os.getcwd(),IMAGE_NAME))
+
+input_data_f32 = np.array(image, dtype=np.float32)
+input_data = np.expand_dims(input_data_f32, axis=0)
+interpreter.set_tensor(input_details[0]['index'], input_data)
+
+interpreter.invoke()
+
+output_data = interpreter.get_tensor(output_details[0]['index'])
+```
+
 
 ## References
 https://www.tensorflow.org/lite/convert/cmdline_examples 
